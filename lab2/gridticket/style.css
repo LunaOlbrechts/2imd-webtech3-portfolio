@@ -1,0 +1,70 @@
+body{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img{
+    width: 100%;
+}
+
+.grid{
+    height: 574px;
+    width: 300px;
+    background-image: url(/gridticket/images/background_mobile.png);
+    background-position: center;
+    display: grid;
+    grid-template-rows: 2fr 8fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+}
+
+.header{
+    height: 94px;
+    background-color: black;
+    color: white;
+    grid-column: 1/ span 2;
+}
+
+.header h1 p{
+    padding-top: 24px 0 31px 32px;
+}
+
+.qr{ 
+    grid-column: 1/ span 2;
+    grid-row: 2/ span 1;
+}
+
+.img_qr{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.test{
+    width: 150px;
+}
+
+div p{
+    display: flex;
+    justify-content: center;
+}
+
+.date{
+    grid-column: 1/ span 1;
+    grid-row: 3;
+    border: 1px solid black;
+}
+
+.admit{
+    grid-column: 2/ span 2;
+    grid-row: 3/ span 1;
+    border: 0.1em solid black;
+}
+
+.ticket{
+    grid-column: 1/ span 2;
+    grid-row: 4/ span 1;
+    border-bottom: 0.1em solid black;
+    border-right: 0.1em solid black;
+    border-left: 0.1em solid black;
+}
