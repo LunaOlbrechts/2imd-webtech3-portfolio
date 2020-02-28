@@ -1,10 +1,17 @@
-body{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+@font-face {
+    font-family: 'UnBPro-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url(https://www.cufonfonts.com/font/unb-office);
+    }
 
 img{
-    width: 100%;
+    width: 50%;
+    height: 50%;
+}
+body{
+    box-sizing: border-box;
+    font-family: 'UnBPro-Regular', 'arial';
 }
 
 .grid{
@@ -19,14 +26,13 @@ img{
 }
 
 .header{
-    height: 94px;
     background-color: black;
     color: white;
     grid-column: 1/ span 2;
 }
 
 .header h1 p{
-    padding-top: 24px 0 31px 32px;
+    padding: 24px 0 31px 32px;
 }
 
 .qr{ 
@@ -34,14 +40,18 @@ img{
     grid-row: 2/ span 1;
 }
 
-.img_qr{
+.qr > div{
+    height: 380px;
     display: flex;
     justify-content: center;
-    align-content: flex-start;
+    align-self: center;
 }
 
 .test{
-    width: 150px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 
 div p{
@@ -52,19 +62,124 @@ div p{
 .date{
     grid-column: 1/ span 1;
     grid-row: 3;
-    border: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .admit{
     grid-column: 2/ span 2;
     grid-row: 3/ span 1;
-    border: 0.1em solid black;
+    border: 1px solid black;
+
 }
 
 .ticket{
     grid-column: 1/ span 2;
     grid-row: 4/ span 1;
-    border-bottom: 0.1em solid black;
-    border-right: 0.1em solid black;
-    border-left: 0.1em solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.frustration{
+    display: none;
+}
+
+@media(min-width: 1000px){
+    .grid{
+        height: 280px;
+        width: 875px;
+        grid-template-columns: repeat(3, 1fr) 1.5fr;
+        grid-template-rows: 5fr 2fr 1fr;
+        background-image: url(/gridticket/images/background_desktop.png);
+        border: 1px solid black;
+    }
+
+    .header{
+        background-color: transparent;
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 3;
+        color: black;
+    }
+
+    .header, h1, p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        letter-spacing: 0.4em;
+        padding: 0;
+    }
+
+    .header > h1{
+        font-size: 3em;
+    }
+
+    .header > p{
+        font-size: 0.7em;
+    }
+
+    .qr > div{
+        height: 282px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .test{
+        height: 50%;
+        width: 50%;
+    }
+
+    .qr{ 
+        grid-column: 4/ span 1;
+        grid-row: 1/ span 3;
+        border-left: 1px solid black;
+    }
+
+    div > p{
+        display: flex;
+        justify-content: center;
+    }
+
+    .date{
+        grid-column: 1/ span 1;
+        grid-row: 2;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .admit{
+        grid-column: 2/ span 1;
+        grid-row: 2/ span 1;
+        border: 1px solid black;
+        border-left: none;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .ticket{
+        grid-column: 3/ span 1;
+        grid-row: 2/ span 1;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        border-left: none;
+        border-right: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .frustration{
+        display: grid;
+        grid-column: 1/ span 3;
+        grid-row: 3/ span 1;
+    }
+
+    .frustration p{
+        letter-spacing: normal;
+        font-size: 0.7em;
+    }
+    
 }
