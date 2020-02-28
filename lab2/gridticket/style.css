@@ -35,6 +35,14 @@ body{
     padding: 24px 0 31px 32px;
 }
 
+.header > h1{
+    letter-spacing: 0.2em;
+}
+.header > p{
+    font-weight: normal;
+    font-size: 0.7em;
+}
+
 .qr{ 
     grid-column: 1/ span 2;
     grid-row: 2/ span 1;
@@ -47,16 +55,17 @@ body{
     align-self: center;
 }
 
-.test{
+.img{
     width: 50%;
     display: flex;
     justify-content: center;
     align-self: center;
 }
 
-div p{
+div > p{
     display: flex;
     justify-content: center;
+    font-weight: bold;
 }
 
 .date{
@@ -71,7 +80,6 @@ div p{
     grid-column: 2/ span 2;
     grid-row: 3/ span 1;
     border: 1px solid black;
-
 }
 
 .ticket{
@@ -80,6 +88,10 @@ div p{
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     border-left: 1px solid black;
+}
+
+.normal{
+    font-weight: normal;
 }
 
 .frustration{
@@ -118,6 +130,7 @@ div p{
 
     .header > p{
         font-size: 0.7em;
+        font-weight: normal;
     }
 
     .qr > div{
@@ -127,7 +140,7 @@ div p{
         align-self: center;
     }
 
-    .test{
+    .img{
         height: 50%;
         width: 50%;
     }
@@ -180,6 +193,7 @@ div p{
     .frustration p{
         letter-spacing: normal;
         font-size: 0.7em;
+        font-weight: normal;
     }
     
 }
