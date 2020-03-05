@@ -7,6 +7,7 @@
       // pressing the enter key should also work
         this.btnAdd = document.querySelector("#btnAddNote");
         this.btnAdd.addEventListener("click", this.createNote.bind(this));
+
         this.loadNotesFromStorage();
     }
     
@@ -21,12 +22,11 @@
       // HINT🤩
       // alert("click");
         let text= document.querySelector("#txtAddNote").value;
-        console.log(text);
         let note = new Note(text);
         
         note.add();
-      // note.saveToStorage();
-      // this.reset();
+        //note.saveToStorage();
+       // this.reset();
     }
     
     reset(){
@@ -43,21 +43,29 @@
       this.title = title;
       // HINT🤩 
       this.element = this.createElement(title);
-      console.log(this.title);
     }
     
     createElement(title){
-        let newNote = document.createElement('div');
-        newNote.setAttribute("class", "card"); 
+        let newNote = document.createElement("div");
+        newNote.setAttribute("class", "card");        //<div class="card"></div>
 
         let newP = document.createElement("p");         //<p>Todo</p>
         newP.innerHTML = title;
 
+        let newA= document.createElement("a");
+        newA.setAttribute("href", "#");
+        newA.setAttribute("class", "card-remove");
+        newA.innerHTML = document.querySelector(".card-remove").innerHTML;
+
         newNote.appendChild(newP);
+        newNote.appendChild(newA);
+
+        newA.addEventListener("click", this.remove.bind(this));
+
         return newNote;
     }
     
-    add(newNote){
+    add(){
       // HINT🤩
       // this function should append the note to the screen somehow
        document.querySelector(".notes").appendChild(this.element);
@@ -72,5 +80,7 @@
     remove(){
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
+      let parent = document.querySelector(".notes");
+      parent.removeChild(this.element);
     } 
   }
