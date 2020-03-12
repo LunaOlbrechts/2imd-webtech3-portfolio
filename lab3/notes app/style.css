@@ -9,4 +9,13 @@
     display: inline-block;
   }
   
-  
+  .btn--clear{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: radial-gradient(circle,#ffeb3b 1%,#fff387 15%,transparent 30%);
+    background-color: #ffeb3b;
+    will-change: box-shadow,background-color;
+    font-size: 22px;
+    padding: 0;
+  }

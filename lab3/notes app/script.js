@@ -58,8 +58,10 @@
       // clicking the button should work
       // pressing the enter key should also work
       this.btnAdd = document.querySelector("#btnAddNote");
+      this.btnClear = document.querySelector("#clearAll");
       this.notes = [];
       this.btnAdd.addEventListener("click", this.createNote.bind(this) );
+      this.btnClear.addEventListener("click", this.reset.bind(this) );
       this.loadNotesFromStorage();
       console.log(localStorage);
     }
@@ -86,7 +88,6 @@
       //push new note to array 
       let noteCount = this.notes.push(note);
       note.saveToStorage(noteCount);
-      this.reset();
     }
     
     reset(){
