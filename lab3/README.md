@@ -2,4 +2,4 @@
 
 [codepen link](https://codepen.io/LunaOlbrechts/pen/MWwVKmg "Notes app codepen link")
 
-[![Notes app](http://img.youtube.com/vi/https://www.youtube.com/watch?v=w1d1bMOcIQk&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=w1d1bMOcIQk&feature=youtu.be) 
+[![Open video](https://img.youtube.com/vi/w1d1bMOcIQk/0.jpg)](https://www.youtube.com/watch?v=w1d1bMOcIQk)
