@@ -10,7 +10,7 @@ const apiMessagesRouter = require('./routes/api/v1/messages');
 
 const app = express();
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:27017/chatbot', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/chatbot', {useNewUrlParser: true});
 
 
 // view engine setup
