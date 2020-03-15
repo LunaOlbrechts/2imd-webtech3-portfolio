@@ -1,13 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const messageSchema = new Schema({
-    text: String,
-    user: String
-});
-
-const Message = mongoose.model('Message', messageSchema);
-
-
+const Message = require('../../../models/Message');
 
 const getAllMessages = (req, res) =>{
     res.json({
@@ -32,10 +23,17 @@ const getMessageById = (req, res) =>{
 
 const createMessage = (req, res) =>{
     let message = new Message();
-    message.text = "haha";
-    message.user = "luna";
+    message.text = req.body.text;
+    message.user = req.body.user;
 
     message.save( (err, doc) =>{
+        if(err){
+            res.json({
+                status: "error", 
+                message: "Could not save the message"
+            });
+            console.log(err);
+        }
         if(!err){
             res.json({
                 "status": "succes",
