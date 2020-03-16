@@ -1,10 +1,15 @@
 const Message = require('../../../models/Message');
 
 const getAllMessages = (req, res) =>{
-    res.json({
-        "status": "succes",
-        "data": {
-            "messages": []
+    Message.find({}, (err, messages) =>{
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "Could not show messages"
+            });
+        }
+        if(!err){
+            res.json(messages);
         }
     });
 }
@@ -32,7 +37,6 @@ const createMessage = (req, res) =>{
                 status: "error", 
                 message: "Could not save the message"
             });
-            console.log(err);
         }
         if(!err){
             res.json({
