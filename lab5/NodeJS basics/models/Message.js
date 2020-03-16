@@ -5,7 +5,10 @@ const messageSchema = new Schema({
         type: String, 
         required: true
     },
-    user: String
+    user:{
+        type: String,
+        required: true
+    } 
 });
 
 const Message = mongoose.model('Message', messageSchema);

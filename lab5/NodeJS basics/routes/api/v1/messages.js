@@ -3,10 +3,9 @@ const router = express.Router();
 const messagesController = require('../../../controllers/api/v1/messages');
 
 router.get("/", messagesController.getAllMessages);
-router.get("/", messagesController.getMessageByUsername);
-router.get("/", messagesController.getMessageById);
+router.get("/:id", messagesController.getMessageById);
 router.post("/", messagesController.createMessage);
-router.get("/", messagesController.removeMessage);
-router.get("/", messagesController.updateMessage);
+router.delete("/:id", messagesController.removeMessage);
+router.put("/:id", messagesController.updateMessage);
 
 module.exports = router;

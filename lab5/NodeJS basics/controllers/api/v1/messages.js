@@ -1,47 +1,67 @@
 const Message = require('../../../models/Message');
 
-const getAllMessages = (req, res) =>{
-    Message.find({}, (err, messages) =>{
-        if(err){
-            res.json({
-                "status": "error",
-                "message": "Could not show messages"
-            });
-        }
-        if(!err){
-            res.json(messages);
-        }
-    });
+const getAllMessages = (req, res) => {
+    console.log(req.query);
+    if (req.query.user) {
+        Message.findOne({ user: req.query.user })
+            .then(messageFound => {
+                if (!messageFound) {
+                    res.json({
+                        "status": "error",
+                        "message": "Could not find message"
+                    });
+                }
+                if (messageFound) {
+                    return res.json(messageFound);
+                }
+            })
+    }
+    else {
+        Message.find({}, (err, messages) => {
+            if (err) {
+                res.json({
+                    "status": "error",
+                    "message": "Could not show messages"
+                });
+            }
+            if (!err) {
+                res.json(messages);
+            }
+        });
+    }
 }
 
-const getMessageByUsername = (req, res) =>{
-    res.json({
-        "status": "succes"
-    });
+const getMessageById = (req, res) => {
+    Message.findById(req.params.id)
+        .then(messageFound => {
+            if (!messageFound) {
+                res.json({
+                    "status": "error",
+                    "message": "Could not find message"
+                });
+            }
+            if (messageFound) {
+                return res.json(messageFound);
+            }
+        })
 }
 
-const getMessageById = (req, res) =>{
-    res.json({
-        "status": "succes"
-    });
-}
-
-const createMessage = (req, res) =>{
+const createMessage = (req, res) => {
     let message = new Message();
     message.text = req.body.text;
     message.user = req.body.user;
 
-    message.save( (err, doc) =>{
-        if(err){
+    message.save((err, doc) => {
+        if (err) {
             res.json({
-                status: "error", 
+                status: "error",
                 message: "Could not save the message"
             });
         }
-        if(!err){
+        if (!err) {
             res.json({
                 "status": "succes",
-                "data":{
+                "data": {
                     "message": doc
                 }
             });
@@ -49,22 +69,57 @@ const createMessage = (req, res) =>{
     });
 }
 
-const removeMessage = (req, res) =>{
-    res.json({
-        "status": "succes"
+const removeMessage = (req, res) => {
+    Message.findByIdAndRemove(req.params.id).then(messageFound => {
+        if (!messageFound) {
+            res.json({
+                "status": "error",
+                "message": "Could not find message"
+            })
+        }
+        if (messageFound) {
+            res.json({
+                "status": "succes",
+                "message": "removed message"
+            })
+        }
     });
 }
 
-const updateMessage = (req, res) =>{
-    res.json({
-        "status": "succes"
+const updateMessage = (req, res) => {
+    Message.findById(req.params.id, (err, doc) => {
+        if (err) {
+            res.json({
+                "result": "error",
+                "message": "can not update message"
+            });
+        }
+        if (!err) {
+            doc.text = req.body.text;
+            doc.user = req.body.user;
+            doc.save((err, doc) => {
+                if (err) {
+                    res.json({
+                        status: "error",
+                        message: "Could not save the message"
+                    });
+                }
+                if (!err) {
+                    res.json({
+                        "status": "succes",
+                        "data": {
+                            "message": doc
+                        }
+                    });
+                }
+
+            });
+        }
     });
 }
 
 
 module.exports.getAllMessages = getAllMessages;
-
-module.exports.getMessageByUsername = getMessageByUsername;
 
 module.exports.getMessageById = getMessageById;
 
