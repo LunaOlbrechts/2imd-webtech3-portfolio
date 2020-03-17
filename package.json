@@ -1,7 +1,7 @@
 {
   "name": "nodejs-basics",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www"
   },
