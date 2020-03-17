@@ -13,7 +13,7 @@ En in de  2imd-webtech3-lab5 repo staat de applicatie die ik gedeployed heb met 
 Ik heb eerst nog geprobeerd om deze issue op te lossen door te werken met een subtree deploy naar heroku maar 
 hierdoor kreeg ik zoveel meer problemen waardoor ik het op deze eenvoudigere manier heb opgelost.
 
-####link to deployment repo
+#### link to deployment repo
 
 https://github.com/LunaOlbrechts/2imd-webtech3-lab5 
 
