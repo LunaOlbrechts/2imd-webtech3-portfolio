@@ -13,7 +13,7 @@ const apiMessagesRouter = require('./routes/api/v1/messages');
 
 const app = express();
 const mongoose = require("mongoose");
-mongoose.connect(config.get('Database.conn'), {useNewUrlParser: true});
+mongoose.connect(process.env.dbconn || config.get('Database.conn'), {useNewUrlParser: true});
 
 
 // view engine setup
