@@ -14,7 +14,8 @@ const apiMessagesRouter = require('./routes/api/v1/messages');
 const app = express();
 const mongoose = require("mongoose");
 mongoose.connect(process.env.dbconn || config.get('Database.conn'), {useNewUrlParser: true});
-
+app.listen(process.env.PORT || 3000, function(){
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views') );
