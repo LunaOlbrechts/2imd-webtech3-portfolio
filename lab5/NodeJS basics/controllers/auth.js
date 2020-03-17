@@ -23,7 +23,7 @@ const signup = async (req, res, next) => {
                 "token": token
             }
         })
-    }).catch( error =>{
+    }).catch( error => {
         res.json({
             "status": "error"
         })
@@ -51,7 +51,7 @@ const login = async (req, res, next) => {
             }
         });
 
-    }).catch( error =>{
+    }).catch( error => {
         res.json({
             "status": "error",
             "message": "Can't log you in, check if password and username are correct"
