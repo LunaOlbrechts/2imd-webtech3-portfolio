@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./bin/www"
+    "start": "node_modules/.bin/nodemon ./bin/www"
   },
   "dependencies": {
     "config": "^3.3.0",
