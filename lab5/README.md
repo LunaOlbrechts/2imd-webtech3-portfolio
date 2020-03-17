@@ -3,7 +3,7 @@
 ### Deploy version vs local version 
 
 Ik heb de opbouw van de applicatie in map lab5 van de repo portfolio gemaakt. 
-Bij het deployen van de applicatie op heroku ben ik tegen een grote issue gebotst. 
+Bij het deployen van de applicatie op heroku ben ik tegen een groot issue gebotst. 
 Je kan namelijk geen applicatie deployen in een lower leven van de repo. Je bent dus verplicht om
 een repo aan te maken en de applicatie in het hoogste niveau van de repo te plaatsen. 
 
