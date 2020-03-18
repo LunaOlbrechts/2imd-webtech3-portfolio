@@ -88,6 +88,7 @@
       //push new note to array 
       let noteCount = this.notes.push(note);
       note.saveToStorage(noteCount);
+      document.querySelector(".form").reset()
     }
     
     reset(){
