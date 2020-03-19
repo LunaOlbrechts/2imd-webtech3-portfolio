@@ -97,12 +97,13 @@
 
       //push new note to array 
       note.saveToStorage();
-      document.querySelector(".form").reset()
+      document.querySelector(".form").reset();
     }
     
-    reset(){
+    reset(e){
       // this function should reset the form 
-      localStorage.clear();
+      e.preventDefault();
+      localStorage.clear(); 
       location.reload();
     }
   }
