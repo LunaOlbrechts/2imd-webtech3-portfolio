@@ -1,10 +1,8 @@
-
   class Note {
-    constructor(title, key) {
+    constructor(noteId, title) {
       this.title = title;
       this.element = this.createElement(title);
-      this.localStorageKey = null;
-      this.key = key;
+      this.id = noteId;
     }
     
     createElement(title){
@@ -34,12 +32,16 @@
       document.querySelector(".notes").appendChild(this.element);    
     }
     
-    saveToStorage(noteIndex){
+    saveToStorage(){
       // HINT🤩
       // localStorage only supports strings, not arrays
-      // if you want to store arrays, look at JSON.parse and JSON.stringify 
-      this.localStorageKey = `notes_${noteIndex}`; 
-      localStorage.setItem(this.localStorageKey, this.title);
+      // if you want to store arrays, look at JSON.parse and JSON.stringify
+      let currentNotes = JSON.parse(localStorage.getItem("notes") );
+      if(currentNotes === null){
+        currentNotes= [];
+      }
+      currentNotes.push(this.title);
+      localStorage.setItem("notes", JSON.stringify(currentNotes) );
     }
     
     remove(){
@@ -47,12 +49,12 @@
       // in this function, 'this' will refer to the current note element
       let parent = document.querySelector(".notes");
       parent.removeChild(this.element);
-      localStorage.removeItem(this.key);
-
+      let currentNotes = JSON.parse(localStorage.getItem("notes") );
+      currentNotes.splice(this.id, 1);
+      localStorage.setItem("notes", JSON.stringify(currentNotes) );
     } 
   }
-  
-  
+
   
 
   class App {
@@ -62,41 +64,46 @@
       // pressing the enter key should also work
       this.btnAdd = document.querySelector("#btnAddNote");
       this.btnClear = document.querySelector("#clearAll");
-      this.notes = [];
+      this.currentId = 0;
       this.btnAdd.addEventListener("click", this.createNote.bind(this) );
       this.btnClear.addEventListener("click", this.reset.bind(this) );
       this.loadNotesFromStorage();
-      console.log(localStorage);
     }
     
     loadNotesFromStorage() {
       // HINT🤩
       // load all notes from storage here and add them to the screen
       // something like note.add() in a loop would be nice
-      for(let i=0;i<localStorage.length; i++) {
-        let key = localStorage.key( i );
-        console.log(key);
-        let noteTitle = localStorage.getItem( key );
-        let currentNote = new Note(noteTitle, key);
-        currentNote.add();
+      let notes = JSON.parse(localStorage.getItem("notes"));
+      console.log(notes);
+      if(notes === null){
+        notes = [];
       }
+
+      notes.forEach((item, index) => {
+        let noteTitle = item;
+        let currentNote = new Note(index, noteTitle);
+        currentNote.add();
+        this.currentId = index;
+      });
     }
      
     createNote(e){
       // this function should create a new note by using the Note() class
       e.preventDefault();
       let text = document.querySelector("#txtAddNote").value;
-      let note = new Note(text);        
+      let note = new Note(this.currentId, text);        
       note.add();
+
       //push new note to array 
-      let noteCount = this.notes.push(note);
-      note.saveToStorage(noteCount);
+      note.saveToStorage();
       document.querySelector(".form").reset()
     }
     
     reset(){
       // this function should reset the form 
       localStorage.clear();
+      location.reload();
     }
   }
   
