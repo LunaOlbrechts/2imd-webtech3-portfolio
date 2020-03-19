@@ -1,9 +1,10 @@
 
   class Note {
-    constructor(title) {
+    constructor(title, key) {
       this.title = title;
       this.element = this.createElement(title);
       this.localStorageKey = null;
+      this.key = key;
     }
     
     createElement(title){
@@ -46,6 +47,8 @@
       // in this function, 'this' will refer to the current note element
       let parent = document.querySelector(".notes");
       parent.removeChild(this.element);
+      localStorage.removeItem(this.key);
+
     } 
   }
   
@@ -74,7 +77,7 @@
         let key = localStorage.key( i );
         console.log(key);
         let noteTitle = localStorage.getItem( key );
-        let currentNote = new Note(noteTitle);
+        let currentNote = new Note(noteTitle, key);
         currentNote.add();
       }
     }
