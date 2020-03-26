@@ -35,11 +35,11 @@ class App {
             .then(data => {
                 let sum = data.currently.summary;
                 let temp = data.currently.temperature;
+                let icon = data.currently.icon;
+
                 let adverstisement = new Adverstisement(sum, temp);
                 adverstisement.changeBackground();
                 adverstisement.changeFooter();
-
-                console.log(sum, temp);
             })
             .catch(err => {
                 console.log(err);
@@ -60,18 +60,25 @@ class Adverstisement {
     }
 
     changeBackground() {
-        var background = document.querySelector(".background");
+        let background = document.querySelector(".background");
+        let diyTitle = document.querySelector(".diyTitle");
+        let element = document.createElement("img");
+
         switch (this.sum) {
             case "Clear":
-                background.style.backgroundImage = "url('./images/lounge.jpg')"; 
-            
+                background.style.backgroundImage = "url('./images/lounge.jpg')";
+                element.setAttribute("src", 'https://qrtag.net/api/qr_3.png?url=https://www.vtwonen.nl/video-kijken/diy-stoere-tuinbank/');
                 break;
             case "Drizzle":
-                background.style.backgroundImage = "url('./images/lounge.jpg')"; 
+                background.style.backgroundImage = "url('./images/plants.jpg')";
+                element.setAttribute("src", 'https://qrtag.net/api/qr_3.png?url=https://www.ilariafatone.com/2016/04/4-diy-for-plant-hangers.html');
+
                 break;
             default:
-                background.style.backgroundImage = 'url("./images/plants.jpg")'; 
+                background.style.backgroundImage = 'url("./images/plants.jpg")';
         }
+
+        document.querySelector(".qrCode").appendChild(element);
     }
 
     changeFooter() {
