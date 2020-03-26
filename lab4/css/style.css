@@ -1,6 +1,18 @@
+.body{
+    color: antiquewhite;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .advertisement{
     height: 600px;
     width: 300px;
-    background-image: url();
+    background: url("../images/lounge.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(6, 25, 61);
+    text-align: center;
 }
