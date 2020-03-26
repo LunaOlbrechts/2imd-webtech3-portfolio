@@ -6,10 +6,16 @@ class App {
     }
 
     getLocation() {
-        navigator.geolocation.getCurrentPosition(
-            this.gotLocation.bind(this),
-            this.errorLocation.bind(this)
-        );
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                this.gotLocation.bind(this),
+                this.errorLocation.bind(this)
+            );
+        }
+        else {
+            console.log("Geolocation is not supported by this browser.");
+        }
     }
 
     gotLocation(result) {
@@ -30,6 +36,8 @@ class App {
                 let sum = data.currently.summary;
                 let temp = data.currently.temperature;
                 let adverstisement = new Adverstisement(sum, temp);
+                adverstisement.changeBackground();
+                adverstisement.changeFooter();
 
                 console.log(sum, temp);
             })
@@ -47,31 +55,27 @@ let app = new App();
 
 class Adverstisement {
     constructor(sum, temp) {
-        this.changeBackground();
-        this.changeFooter();
-        sum;
-        temp;
+        this.sum = sum;
+        this.temp = temp;
     }
 
-    changeBackground(sum) {
-        let url = "";
-        let background = document.querySelector(".background");
-        switch(sum) {
-            case "clear":
-                url = "../images/plants.jpg";
+    changeBackground() {
+        var background = document.querySelector(".background");
+        switch (this.sum) {
+            case "Clear":
+                background.style.backgroundImage = "url('./images/lounge.jpg')"; 
+            
                 break;
-            case "Drizzle": 
-                url = "../images/plants.jpg";
+            case "Drizzle":
+                background.style.backgroundImage = "url('./images/lounge.jpg')"; 
                 break;
             default:
-                url = "../images/plants.jpg";
-          }
-        
-          background.style.backgroundImage = url;
+                background.style.backgroundImage = 'url("./images/plants.jpg")'; 
+        }
     }
 
-    changeFooter(sum, temp) {
-        document.querySelector(".weatherSummary").innerHTML = sum;
-        document.querySelector(".weatherTemp").innerHTML = temp + " C°";
+    changeFooter() {
+        document.querySelector(".weatherSummary").innerHTML = this.sum;
+        document.querySelector(".weatherTemp").innerHTML = this.temp + " C°";
     }
 }

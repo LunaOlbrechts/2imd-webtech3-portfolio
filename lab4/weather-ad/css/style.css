@@ -30,7 +30,7 @@
 .background{
     grid-column: 1/ span 4;
     grid-row: 2 / span 3;
-    background: url("../images/lounge.jpg");
+    background-image: url("../images/lounge.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
