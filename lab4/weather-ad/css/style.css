@@ -43,5 +43,6 @@
 }
 
 .weather > p{
-    
+    color: rgb(6, 25, 61);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
