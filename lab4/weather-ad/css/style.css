@@ -29,7 +29,7 @@
 
 .weather{
     grid-column: 1/ span 2;
-    grid-row: 2 / span 2;
+    grid-row: 2 / span 1;
     text-align: center;
     background-color: rgb(252, 252, 252);
 }
